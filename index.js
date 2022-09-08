@@ -44,8 +44,31 @@ app.use(function (req, res, next) {
 
 //===[API Start]>>
 
-cron.schedule('* * * * * *', () => {
+cron.schedule('* * * * * *', async() => {
     
+    console.log('Print====');
+
+    // const message = {
+    //     data: {
+    //       score: '850',
+    //       time: '2:45'
+    //     },
+    //     notification: {
+    //         title: '$FooCorp up 1.43% on the day',
+    //         body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.',
+    //         imageUrl: 'https://content-management-files.canva.com/91333afd-4fee-48ba-8a5d-738b9bbb072d/education2x.jpg'
+    //     },
+    //     topic: "riskiadi"
+    //   };
+
+    //   try {
+    //     console.log('Masuk====');
+    //     await admin.messaging().send(message);
+    //     console.log('Selesai====');
+    //   } catch (error) {
+    //     console.log('Error:', error);
+    //   }
+
 });
 
 app.get('/time', async (req, res) => {
