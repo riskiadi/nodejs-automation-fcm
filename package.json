@@ -1,0 +1,14 @@
+{
+  "name": "fcm-automation",
+  "version": "1.0.0",
+  "description": "fcm automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rizkiadisaputra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
