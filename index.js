@@ -62,16 +62,20 @@ app.get('/time', async (req, res) => {
 
     var now = new Date(new Date().toUTCString()).getTime();
     let unixEpochTime = (now);
-    const dd=new Date(unixEpochTime);
+    const dd=new Date(unixEpochTime+(3600 *7));
     let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
 
     res.status(200).json({
         status: {
             code: 200,
-            message: myFormattedDateTime,
+            message: {
+                "unix":unixEpochTime,
+                "gmt":unixEpochTime+(3600 *7),
+                "date":myFormattedDateTime,
+            },
         }
     });
-    
+
 });
 
 
