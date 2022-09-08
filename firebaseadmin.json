@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "telemonitoring-kanker",
+  "private_key_id": "efd6133d1455c2fbcfd27adbdb52784206c14d25",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCmlKLBynUL0xWd\nUBv4uQz6fDFBemizdGS1HBgq7rwpJKCgsk/1KlTm9jQY5xTQ785HxzFWLEjrweB7\nadxqYfmWjcfSbq5E5ouPlsRfkoZyallF3J+pphAS0LysaiAFGb5OSff/dhUl4CIo\n4Wgr2Etg/tsnOwTUfvg3exCgwGLAzu/h5CLTapHQMdBEKejQ/2t1mw8aPAe5DqXw\nXMSTl80tCTHvMOz0zBa2BtWL2RoRfkmGbmt9kEh8atQrNyEegG9C7AaNyJH2EEv7\nXzJ1kyqK/Jmq/iEKVfiEw54Lhig8a6/PMc//5N8hTVS2U3m8b+tZcEE1OYbVh0aU\nPhD7F1FLAgMBAAECggEAS47m5kztW2AzESh5j49sXh+//cnGvQNh/K5SHgMssOLO\nwyUuVG+PlDV/uv3x+LWVVQR6kfJDX0CREJmbY1uuaMZFqWMPw+voyMgjqZAeUL6B\nYMlqWHqdFtO8iN4YSQf8xKkThrnqbMQl6nIXnK+evU/MWxaPoc03zH6TM78f7AEU\n6rJPCkHaeTmsooesZz0ClPPf74AdfBA0XkBMtpIY77mNwBg4V0ZIu5OgPlJ3u7zp\nTNzZL3U0dkabuqbTKv/jHsnnqi0GgkwRFa/0R4/mRZqHlccqYLxzy81TyK0QHSrc\nCkyXVfuC5tbJS94JKDxgX6Wk6iIcOWDwaBiPEzt4eQKBgQDmCqT6aGzNgbWb63j2\ncbzst0aABeaYRF98akeTiCUJ/F8XHhNTzo17G16P/nl6lb1XcoMpIOZuHVL2DduV\nDsPkq9klZmmw69JWzu1ishiCWymqTe4dXWbhN3zgbsJQfDopOsSBlTecDtSuLN3y\nve1BJcjA3d4nAqEHN6PTmyMo2QKBgQC5YMEgNLqdLZCr9pUYvRdBrne41t7dAoUJ\nt18Ivg4mdL/y69RuvHFSqtTh8Zv5bHq2HZAeohJUC0g7UYTisZ8YsDhZnHxbFq5h\nzje+AGOgQ44vXlA8YHMGMlDeEgQ/jlKPF1skjLHla2z8EGzky95AOWXzpaski1Z/\nAvZMhChUwwKBgFTkTred+7DnEhcFEbGYjYippdmu08cTTE2Ehv95uXly6cCFN8qw\nqeNpWT84QKotQh9YQfDWlFLEfY4R1RuvxDjJ9itoHM7OZ+PjHxVR9dt9OuX/NkUd\n585rBKlqFklPXsNCTawoXco4auIP6qQe1MQ65lfOSKIKxVP9g3aehJ4ZAoGBAIkK\n9xrZAFBsO/R0wTpdp9C9qvIxnuYiE7ngHth2sD1LuA9culn244vqkKBMHjOhN4Jk\njoOm6wfIo2h+1k9EYko9FBtjLSelt9rEOb8zyHLVHkr0XTqVTtN45QGWrh9SFsSD\nzrRRcr4Y0aPyfJ4T/MTb6fvaMJA+lf4lcXGVjb9DAoGAWZkmz3rdhkVhuqFNglgM\nmF29mMMp+UGooYuIcILdfdXIqZamika7XV/Jml3d5ECS3kxumpANVp5G6y0Pgj28\nT35hXbv9kwuqBnpJR6e3RntckqxtbX1WTzAoodcw1OAuUUU2fO6FoL8/SvYKaRa9\nyUTqJ5yewliJZ4XkcVdVPlM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-q64bg@telemonitoring-kanker.iam.gserviceaccount.com",
+  "client_id": "108995977069131378886",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-q64bg%40telemonitoring-kanker.iam.gserviceaccount.com"
+}
