@@ -65,8 +65,7 @@ app.get('/time', async (req, res) => {
     // const dd=new Date(unixEpochTime+(3600 *7));
     // let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
 
-    var utcNormal = new Date().getTime();
-    var utc = new Date().setUTCMilliseconds(0);
+    var utc = new Date().setUTCMilliseconds(0)+(25200*1000);
     var dd = new Date(utc);
     let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
 
@@ -74,9 +73,6 @@ app.get('/time', async (req, res) => {
         status: {
             code: 200,
             message: {
-                "utcnormal":utcNormal,
-                "utcModified":utc,
-                "utcPlus7":utc+(25200*1000),
                 "date":myFormattedDateTime,
             },
         }
