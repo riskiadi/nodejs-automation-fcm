@@ -44,12 +44,12 @@ app.use(function (req, res, next) {
 
 //===[API Start]>>
 
-var now = new Date(new Date().toUTCString()).getTime();
-let unixEpochTime = (now);
-const dd=new Date(unixEpochTime);
-let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
-
 cron.schedule('* * * * * *', () => {
+    var utc = new Date().setUTCMilliseconds(0);
+    var dd = new Date(utc);
+    let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
+
+    console.log(`===`);
     console.log(`API CALLED ${myFormattedDateTime}`);
 });
 
