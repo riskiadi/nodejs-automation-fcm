@@ -8,7 +8,12 @@ const port = 2021;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
 app.use(function (req, res, next) {
+    
+    if(req.headers.authorization === authorizationPwd) {
+        return next()
+    }
     
     if(req.headers.authorization != authorizationPwd && req.headers.authorization != undefined) {
         res.status(401).json({
