@@ -58,6 +58,23 @@ cron.schedule('* * * * * *', () => {
 //     console.log("API CALLED");
 // };
 
+app.get('/time', async (req, res) => {
+
+    var now = new Date(new Date().toUTCString()).getTime();
+    let unixEpochTime = (now);
+    const dd=new Date(unixEpochTime);
+    let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
+
+    res.status(200).json({
+        status: {
+            code: 200,
+            message: myFormattedDateTime,
+        }
+    });
+    
+});
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/front.html');
