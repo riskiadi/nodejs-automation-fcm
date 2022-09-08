@@ -60,17 +60,23 @@ cron.schedule('* * * * * *', () => {
 
 app.get('/time', async (req, res) => {
 
-    var now = new Date(new Date().toUTCString()).getTime();
-    let unixEpochTime = (now);
-    const dd=new Date(unixEpochTime+(3600 *7));
+    // var now = new Date(new Date().toUTCString()).getTime();
+    // let unixEpochTime = (now);
+    // const dd=new Date(unixEpochTime+(3600 *7));
+    // let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
+
+    var utcNormal = new Date().getTime();
+    var utc = new Date().setUTCMilliseconds(0);
+    var dd = new Date(utc);
     let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
 
     res.status(200).json({
         status: {
             code: 200,
             message: {
-                "unix":unixEpochTime,
-                "gmt":unixEpochTime+(3600 *7),
+                "utcnormal":utcNormal,
+                "utcModified":utc,
+                "utcPlus7":utc+(25200*1000),
                 "date":myFormattedDateTime,
             },
         }
