@@ -45,25 +45,10 @@ app.use(function (req, res, next) {
 //===[API Start]>>
 
 cron.schedule('* * * * * *', () => {
-    var utc = new Date().setUTCMilliseconds(0);
-    var dd = new Date(utc);
-    let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
-
-    console.log(`===`);
-    console.log(`API CALLED ${myFormattedDateTime}`);
+    
 });
 
-// while(true){
-//     let date_ob = new Date();
-//     console.log("API CALLED");
-// };
-
 app.get('/time', async (req, res) => {
-
-    // var now = new Date(new Date().toUTCString()).getTime();
-    // let unixEpochTime = (now);
-    // const dd=new Date(unixEpochTime+(3600 *7));
-    // let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
 
     var utc = new Date().setUTCMilliseconds(0)+(25200*1000);
     var dd = new Date(utc);
