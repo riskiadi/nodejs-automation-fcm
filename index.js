@@ -1,6 +1,8 @@
 const express = require('express');
 var admin = require("firebase-admin");
 const bodyParser = require('body-parser');
+var cron = require('node-cron');
+const date = require('date-and-time');
 const authorizationPwd = "riskiadi+";
 const app = express();
 const port = 2021;
@@ -16,6 +18,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
     
+    return next()
+
     if(req.headers.authorization === authorizationPwd) {
         return next()
     }
@@ -40,11 +44,43 @@ app.use(function (req, res, next) {
 
 //===[API Start]>>
 
+var now = new Date(new Date().toUTCString()).getTime();
+let unixEpochTime = (now);
+const dd=new Date(unixEpochTime);
+let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
+
+cron.schedule('* * * * * *', () => {
+    console.log(`API CALLED ${myFormattedDateTime}`);
+});
+
+// while(true){
+//     let date_ob = new Date();
+//     console.log("API CALLED");
+// };
+
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/front.html');
 });
 
-app.get('/read', (req, res) => {
+app.get('/read', async (req, res) => {
+
+    const message = {
+        data: {
+          score: '850',
+          time: '2:45'
+        },
+        topic: "riskiadi"
+      };
+
+      try {
+        await admin.messaging().send(message);
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    // admin.messaging().send(message).then((response)=>{
+    //     console.log('Successfully sent message:', response);
+    // });
 
     var ref = db.ref("/schedule").orderByChild("jam");
     ref.once("value", function(snapshot) {
@@ -54,7 +90,7 @@ app.get('/read', (req, res) => {
                 message: snapshot.val(),
             }
         });
-    })
+    });
 
 });
 
