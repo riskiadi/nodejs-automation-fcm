@@ -55,7 +55,7 @@ cron.schedule('0 6 * * *', async() => {
                 data : {
                     navigation: "/pengingatDiet",
                     title: "Pengingat Diet",
-                    body: "alarm diet telah aktif"
+                    body: "melakukan pola hidup sehat dengan diet"
                 }
             };
             try {
@@ -79,7 +79,7 @@ cron.schedule('0 7 * * *', async() => {
                 data : {
                     navigation: "/pengingatObat",
                     title: "Pengingat Obat",
-                    body: "alarm obat telah aktif"
+                    body: "waktunya minum obat sesuai anjuran"
                 }
             };
             try {
