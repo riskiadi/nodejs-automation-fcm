@@ -44,30 +44,57 @@ app.use(function (req, res, next) {
 
 //===[API Start]>>
 
-cron.schedule('* * * * * *', async() => {
-    
-    console.log('Print====');
+cron.schedule('0 6 * * *', async() => {
 
-    // const message = {
-    //     data: {
-    //       score: '850',
-    //       time: '2:45'
-    //     },
-    //     notification: {
-    //         title: '$FooCorp up 1.43% on the day',
-    //         body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.',
-    //         imageUrl: 'https://content-management-files.canva.com/91333afd-4fee-48ba-8a5d-738b9bbb072d/education2x.jpg'
-    //     },
-    //     topic: "riskiadi"
-    //   };
+    var ref = db.ref("/schedule/diet");
+    ref.once("value", function(snapshot) {
+        snapshot.forEach((snapshot2)=>{
+            const message = {
+                data: {
+                score: '850',
+                time: '2:45'
+                },
+                notification: {
+                    title: '$FooCorp up 1.43% on the day',
+                    body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.',
+                    imageUrl: 'https://content-management-files.canva.com/91333afd-4fee-48ba-8a5d-738b9bbb072d/education2x.jpg'
+                },
+                topic: snapshot2.key
+            };
+            try {
+                admin.messaging().send(message);
+            } catch (error) {
+                console.log('Error:', error);
+            }
+        });
+    });
 
-    //   try {
-    //     console.log('Masuk====');
-    //     await admin.messaging().send(message);
-    //     console.log('Selesai====');
-    //   } catch (error) {
-    //     console.log('Error:', error);
-    //   }
+});
+
+cron.schedule('0 7 * * *', async() => {
+
+    var ref = db.ref("/schedule/obat");
+    ref.once("value", function(snapshot) {
+        snapshot.forEach((snapshot2)=>{
+            const message = {
+                data: {
+                score: '850',
+                time: '2:45'
+                },
+                notification: {
+                    title: '$FooCorp up 1.43% on the day',
+                    body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.',
+                    imageUrl: 'https://content-management-files.canva.com/91333afd-4fee-48ba-8a5d-738b9bbb072d/education2x.jpg'
+                },
+                topic: snapshot2.key
+            };
+            try {
+                admin.messaging().send(message);
+            } catch (error) {
+                console.log('Error:', error);
+            }
+        });
+    });
 
 });
 
@@ -87,8 +114,6 @@ app.get('/time', async (req, res) => {
     });
 
 });
-
-
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/front.html');
