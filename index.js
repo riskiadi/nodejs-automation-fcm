@@ -50,16 +50,13 @@ cron.schedule('0 6 * * *', async() => {
     ref.once("value", function(snapshot) {
         snapshot.forEach((snapshot2)=>{
             const message = {
-                data: {
-                score: '850',
-                time: '2:45'
-                },
-                notification: {
-                    title: '$FooCorp up 1.43% on the day',
-                    body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.',
-                    imageUrl: 'https://content-management-files.canva.com/91333afd-4fee-48ba-8a5d-738b9bbb072d/education2x.jpg'
-                },
-                topic: snapshot2.key
+                topic: snapshot2.key,
+                priority: "high",
+                data : {
+                    navigation: "/pengingatDiet",
+                    title: "Pengingat Diet",
+                    body: "alarm diet telah aktif"
+                }
             };
             try {
                 admin.messaging().send(message);
@@ -77,16 +74,13 @@ cron.schedule('0 7 * * *', async() => {
     ref.once("value", function(snapshot) {
         snapshot.forEach((snapshot2)=>{
             const message = {
-                data: {
-                score: '850',
-                time: '2:45'
-                },
-                notification: {
-                    title: '$FooCorp up 1.43% on the day',
-                    body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.',
-                    imageUrl: 'https://content-management-files.canva.com/91333afd-4fee-48ba-8a5d-738b9bbb072d/education2x.jpg'
-                },
-                topic: snapshot2.key
+                topic: snapshot2.key,
+                priority: "high",
+                data : {
+                    navigation: "/pengingatObat",
+                    title: "Pengingat Obat",
+                    body: "alarm obat telah aktif"
+                }
             };
             try {
                 admin.messaging().send(message);
