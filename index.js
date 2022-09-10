@@ -118,6 +118,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/obat', (req, res) => {
+    var errRef = db.ref("/debug/info");
+    errRef.push().set(`/obat: obat notif triggered`)
     sendObatNotif();
     res.status(200).json({
         status: {
@@ -128,6 +130,8 @@ app.get('/obat', (req, res) => {
 });
 
 app.get('/diet', (req, res) => {
+    var errRef = db.ref("/debug/info");
+    errRef.push().set(`diet: diet notif triggered`)
     sendDietNotif();
     res.status(200).json({
         status: {
