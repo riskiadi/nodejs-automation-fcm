@@ -68,7 +68,7 @@ cron.schedule('0 6 * * *', async() => {
 
 });
 
-cron.schedule('14 00 * * *', async() => {
+cron.schedule('17 0 * * *', async() => {
 
     var ref = db.ref("/schedule/obat");
     ref.once("value", function(snapshot) {
