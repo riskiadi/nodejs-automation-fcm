@@ -93,7 +93,7 @@ async function sendDietNotif(){
 //===[API Start]>>
 
 cron.schedule('0 6 * * *',() => sendDietNotif() );
-cron.schedule('23 1 * * *',() => sendObatNotif() );
+cron.schedule('35 10 * * *',() => sendObatNotif() );
 
 app.get('/time', async (req, res) => {
     var serverT = new Date();
