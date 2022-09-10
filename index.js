@@ -42,40 +42,12 @@ app.use(function (req, res, next) {
 
 });
 
-//===[API Start]>>
-
-cron.schedule('0 6 * * *', async() => {
-
-    var ref = db.ref("/schedule/diet");
-    ref.once("value", function(snapshot) {
-        snapshot.forEach((snapshot2)=>{
-            const message = {
-                topic: snapshot2.key,
-                priority: "high",
-                data : {
-                    navigation: "/pengingatDiet",
-                    title: "Pengingat Diet",
-                    body: "melakukan pola hidup sehat dengan diet"
-                }
-            };
-            try {
-                admin.messaging().send(message);
-            } catch (error) {
-                console.log('Error:', error);
-            }
-        });
-    });
-
-});
-
-cron.schedule('17 0 * * *', async() => {
-
+async function sendObatNotif(){
     var ref = db.ref("/schedule/obat");
     ref.once("value", function(snapshot) {
         snapshot.forEach((snapshot2)=>{
             const message = {
                 topic: snapshot2.key,
-                priority: "high",
                 data : {
                     navigation: "/pengingatObat",
                     title: "Pengingat Obat",
@@ -89,7 +61,37 @@ cron.schedule('17 0 * * *', async() => {
             }
         });
     });
+}
 
+async function sendDietNotif(){
+    var ref = db.ref("/schedule/diet");
+    ref.once("value", function(snapshot) {
+        snapshot.forEach((snapshot2)=>{
+            const message = {
+                topic: snapshot2.key,
+                data : {
+                    navigation: "/pengingatDiet",
+                    title: "Pengingat Diet",
+                    body: "melakukan pola hidup sehat dengan diet"
+                }
+            };
+            try {
+                admin.messaging().send(message);
+            } catch (error) {
+                console.log('Error:', error);
+            }
+        });
+    });
+}
+
+//===[API Start]>>
+
+cron.schedule('0 6 * * *', async() => {
+    sendDietNotif();
+});
+
+cron.schedule('40 0 * * *', async() => {
+    sendObatNotif();
 });
 
 app.get('/time', async (req, res) => {
@@ -115,25 +117,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/obat', (req, res) => {
-    var ref = db.ref("/schedule/obat");
-    ref.once("value", function(snapshot) {
-        snapshot.forEach((snapshot2)=>{
-            const message = {
-                topic: snapshot2.key,
-                priority: "high",
-                data : {
-                    navigation: "/pengingatObat",
-                    title: "Pengingat Obat",
-                    body: "waktunya minum obat sesuai anjuran"
-                }
-            };
-            try {
-                admin.messaging().send(message);
-            } catch (error) {
-                console.log('Error:', error);
-            }
-        });
-    });
+    sendObatNotif();
     res.status(200).json({
         status: {
             code: 200,
@@ -143,25 +127,7 @@ app.get('/obat', (req, res) => {
 });
 
 app.get('/diet', (req, res) => {
-    var ref = db.ref("/schedule/diet");
-    ref.once("value", function(snapshot) {
-        snapshot.forEach((snapshot2)=>{
-            const message = {
-                topic: snapshot2.key,
-                priority: "high",
-                data : {
-                    navigation: "/pengingatDiet",
-                    title: "Pengingat Diet",
-                    body: "melakukan pola hidup sehat dengan diet"
-                }
-            };
-            try {
-                admin.messaging().send(message);
-            } catch (error) {
-                console.log('Error:', error);
-            }
-        });
-    });
+    sendDietNotif();
     res.status(200).json({
         status: {
             code: 200,
