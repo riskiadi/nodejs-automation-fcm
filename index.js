@@ -93,7 +93,7 @@ cron.schedule('5 7 * * *', async() => {
 });
 
 app.get('/time', async (req, res) => {
-
+    var serverT = new Date();
     var utc = new Date().setUTCMilliseconds(0)+(25200*1000);
     var dd = new Date(utc);
     let myFormattedDateTime = date.format(dd, 'YYYY/MM/DD HH:mm:ss');
@@ -102,6 +102,7 @@ app.get('/time', async (req, res) => {
         status: {
             code: 200,
             message: {
+                "serverTime":serverT,
                 "date":myFormattedDateTime,
             },
         }
