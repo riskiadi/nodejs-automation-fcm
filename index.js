@@ -114,6 +114,62 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/front.html');
 });
 
+app.get('/obat', (req, res) => {
+    var ref = db.ref("/schedule/obat");
+    ref.once("value", function(snapshot) {
+        snapshot.forEach((snapshot2)=>{
+            const message = {
+                topic: snapshot2.key,
+                priority: "high",
+                data : {
+                    navigation: "/pengingatObat",
+                    title: "Pengingat Obat",
+                    body: "waktunya minum obat sesuai anjuran"
+                }
+            };
+            try {
+                admin.messaging().send(message);
+            } catch (error) {
+                console.log('Error:', error);
+            }
+        });
+    });
+    res.status(200).json({
+        status: {
+            code: 200,
+            message: "success",
+        }
+    });
+});
+
+app.get('/diet', (req, res) => {
+    var ref = db.ref("/schedule/diet");
+    ref.once("value", function(snapshot) {
+        snapshot.forEach((snapshot2)=>{
+            const message = {
+                topic: snapshot2.key,
+                priority: "high",
+                data : {
+                    navigation: "/pengingatDiet",
+                    title: "Pengingat Diet",
+                    body: "melakukan pola hidup sehat dengan diet"
+                }
+            };
+            try {
+                admin.messaging().send(message);
+            } catch (error) {
+                console.log('Error:', error);
+            }
+        });
+    });
+    res.status(200).json({
+        status: {
+            code: 200,
+            message: "success",
+        }
+    });
+});
+
 app.get('/read', async (req, res) => {
 
     const message = {
