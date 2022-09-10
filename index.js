@@ -47,17 +47,20 @@ async function sendObatNotif(){
     ref.once("value", function(snapshot) {
         snapshot.forEach((snapshot2)=>{
             const message = {
-                topic: snapshot2.key,
                 data : {
                     navigation: "/pengingatObat",
                     title: "Pengingat Obat",
                     body: "waktunya minum obat sesuai anjuran"
                 }
             };
+            const options = {
+                priority: "high"
+            };
             try {
-                admin.messaging().send(message);
+                admin.messaging().sendToTopic(snapshot2.key, message, options);
             } catch (error) {
-                console.log('Error:', error);
+                var errRef = db.ref("/debug/error");
+                errRef.push().set(`Error: ${error}`)
             }
         });
     });
@@ -68,17 +71,20 @@ async function sendDietNotif(){
     ref.once("value", function(snapshot) {
         snapshot.forEach((snapshot2)=>{
             const message = {
-                topic: snapshot2.key,
                 data : {
                     navigation: "/pengingatDiet",
                     title: "Pengingat Diet",
                     body: "melakukan pola hidup sehat dengan diet"
                 }
             };
+            const options = {
+                priority: "high"
+            };
             try {
-                admin.messaging().send(message);
+                admin.messaging().sendToTopic(snapshot2.key, message, options);
             } catch (error) {
-                console.log('Error:', error);
+                var errRef = db.ref("/debug/error");
+                errRef.push().set(`Error: ${error}`)
             }
         });
     });
@@ -86,13 +92,8 @@ async function sendDietNotif(){
 
 //===[API Start]>>
 
-cron.schedule('0 6 * * *', async() => {
-    sendDietNotif();
-});
-
-cron.schedule('40 0 * * *', async() => {
-    sendObatNotif();
-});
+cron.schedule('0 6 * * *',() => sendDietNotif() );
+cron.schedule('23 1 * * *',() => sendObatNotif() );
 
 app.get('/time', async (req, res) => {
     var serverT = new Date();
